@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #632ee3;
+}
+
+.bg-smart {
+  @apply bg-gradient-to-r from-[#632EE3] to-[#9F62F2];
+}
+
+.text-smart {
+  @apply bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-transparent bg-clip-text;
+}
+
+.border-smart {
+  @apply border-[#632EE3];
+}
+
+a.active {
+  @apply bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white;
+}
+
+a:hover {
+  @apply bg-gradient-to-r from-[#cbb5ff] to-[#d8bcff] text-white;
+}
