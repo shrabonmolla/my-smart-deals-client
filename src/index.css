@@ -22,7 +22,3 @@
 a.active {
   @apply bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white;
 }
-
-a:hover {
-  @apply bg-gradient-to-r from-[#cbb5ff] to-[#d8bcff] text-white;
-}
