@@ -7,6 +7,8 @@ import AllProducts from "../Pages/AllProducts";
 import MyProducts from "../Pages/MyProducts";
 import CreateProducts from "../Pages/CreateProducts";
 import MyBids from "../Pages/MyBids";
+import ViewDetails from "../Pages/ViewDetails";
+import OfferedPrice from "../Pages/OfferedPrice";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ export const router = createBrowserRouter([
       {
         path: "/mybids",
         element: <MyBids />,
+      },
+      {
+        path: "/viewdetails",
+        element: <ViewDetails />,
+      },
+      {
+        path: "/offeredprice",
+        element: <OfferedPrice />,
       },
     ],
   },
