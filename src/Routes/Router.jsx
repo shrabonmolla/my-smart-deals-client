@@ -9,6 +9,7 @@ import CreateProducts from "../Pages/CreateProducts";
 import MyBids from "../Pages/MyBids";
 import ViewDetails from "../Pages/ViewDetails";
 import OfferedPrice from "../Pages/OfferedPrice";
+import PrivateRoute from "../PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -33,7 +34,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myproducts",
-        element: <MyProducts />,
+        element: (
+          <PrivateRoute>
+            <MyProducts />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/createproducts",
@@ -41,11 +46,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/mybids",
-        element: <MyBids />,
+        element: (
+          <PrivateRoute>
+            <MyBids />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/viewdetails",
-        element: <ViewDetails />,
+        element: (
+          <PrivateRoute>
+            <ViewDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/offeredprice",

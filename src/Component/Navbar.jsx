@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
 
 export default function Navbar() {
+  const { user, logOut } = useContext(AuthContext);
+  // handleLogOut
+  function handleLogOut() {
+    logOut()
+      .then((res) => {
+        console.log(res);
+        alert("logout successful");
+      })
+      .catch((err) => console.log(err.message));
+  }
   const list = (
     <>
       <li>
@@ -50,17 +61,26 @@ export default function Navbar() {
               {list}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl font-bold ">
+          <Link to="/" className="btn btn-ghost text-xl font-bold ">
             Smart <span className="text-smart">Deals</span>
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex gap-5">
           <ul className="menu menu-horizontal px-1">{list}</ul>
         </div>
         <div className="navbar-end gap-4">
-          <Link to="/login" className="btn bg-none border-smart text-smart">
-            Login
-          </Link>
+          {user ? (
+            <Link
+              onClick={handleLogOut}
+              className="btn bg-none border-smart text-smart"
+            >
+              Log Out
+            </Link>
+          ) : (
+            <Link to="/login" className="btn bg-none border-smart text-smart">
+              Login
+            </Link>
+          )}
           <Link to="/register" className="btn bg-smart border-none text-white">
             Register
           </Link>

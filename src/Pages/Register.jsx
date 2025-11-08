@@ -1,12 +1,24 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useContext } from "react";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
 
 export default function Register() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { googleSingnIn, setUser } = useContext(AuthContext);
+  function handleGoogleSignIn() {
+    googleSingnIn()
+      .then((res) => {
+        setUser(res.user);
+        navigate(location.state ? location.state : "/");
+      })
+      .catch((err) => console.log(err.message));
+  }
   return (
     <div className="py-10 flex items-center justify-center">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold">Register Now!</h1>
+          <h1 className="text-4xl font-bold">Register Now! </h1>
           <p>
             Already have an account?{" "}
             <Link to="/login" className="text-smart">
@@ -34,7 +46,10 @@ export default function Register() {
             </button>
             <div className="divider">OR</div>
             {/* Google */}
-            <button className="btn bg-white text-black border-[#e5e5e5]">
+            <button
+              onClick={handleGoogleSignIn}
+              className="btn bg-white text-black border-[#e5e5e5]"
+            >
               <svg
                 aria-label="Google logo"
                 width="16"
